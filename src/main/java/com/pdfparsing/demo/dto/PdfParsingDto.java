@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class PdfParsingDto {
+
     private TaxAgentInfoDto taxAgentInfo;
     private TaxPayerInfoDto taxPayerInfo;
     private List<IncomeInfoDto> incomes;

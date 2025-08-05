@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 @Data
 public class IncomeInfoDto {
+
     private String month;
     private String incomeCode;
     private BigDecimal incomeAmount;

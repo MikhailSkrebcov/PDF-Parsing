@@ -1,10 +1,11 @@
-package com.pdfparsing.demo.exception;
+package com.pdfparsing.demo.exception.handler;
 
-import lombok.AllArgsConstructor;
+import com.pdfparsing.demo.exception.PdfProcessingException;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
@@ -13,23 +14,25 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PdfProcessingException.class)
-    public ResponseEntity<ErrorResponse> handlePdfProcessingException(PdfProcessingException ex) {
-        ErrorResponse response = new ErrorResponse(
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePdfProcessingException(PdfProcessingException ex) {
+
+        return new ErrorResponse(
                 "PDF_PROCESSING_ERROR",
                 ex.getMessage(),
                 LocalDateTime.now()
         );
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGeneralException(Exception ex) {
-        ErrorResponse response = new ErrorResponse(
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleGeneralException(Exception ex) {
+
+        return new ErrorResponse(
                 "INTERNAL_SERVER_ERROR",
-                "Произошла внутренняя ошибка сервера",
+                "An unexpected error occurred",
                 LocalDateTime.now()
         );
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
     @Data
