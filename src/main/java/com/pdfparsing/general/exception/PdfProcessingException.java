@@ -1,4 +1,4 @@
-package com.pdfparsing.demo.exception;
+package com.pdfparsing.general.exception;
 
 public class PdfProcessingException extends RuntimeException {
 

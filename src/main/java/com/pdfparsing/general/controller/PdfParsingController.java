@@ -1,8 +1,8 @@
-package com.pdfparsing.demo.controller;
+package com.pdfparsing.general.controller;
 
-import com.pdfparsing.demo.dto.PdfParsingDto;
-import com.pdfparsing.demo.entity.PdfParsingEntity;
-import com.pdfparsing.demo.service.PdfParsingService;
+import com.pdfparsing.general.dto.PdfParsingDto;
+import com.pdfparsing.general.entity.PdfParsingEntity;
+import com.pdfparsing.general.service.PdfParsingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

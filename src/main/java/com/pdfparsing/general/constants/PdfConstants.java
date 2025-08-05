@@ -1,4 +1,4 @@
-package com.pdfparsing.demo.constants;
+package com.pdfparsing.general.constants;
 
 public class PdfConstants {
 

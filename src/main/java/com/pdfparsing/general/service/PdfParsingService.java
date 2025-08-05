@@ -1,10 +1,10 @@
-package com.pdfparsing.demo.service;
+package com.pdfparsing.general.service;
 
-import com.pdfparsing.demo.constants.PdfConstants;
-import com.pdfparsing.demo.dto.*;
-import com.pdfparsing.demo.entity.PdfParsingEntity;
-import com.pdfparsing.demo.exception.PdfProcessingException;
-import com.pdfparsing.demo.repository.PdfParsingRepository;
+import com.pdfparsing.general.constants.PdfConstants;
+import com.pdfparsing.general.dto.*;
+import com.pdfparsing.general.entity.PdfParsingEntity;
+import com.pdfparsing.general.exception.PdfProcessingException;
+import com.pdfparsing.general.repository.PdfParsingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.Loader;
@@ -19,7 +19,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

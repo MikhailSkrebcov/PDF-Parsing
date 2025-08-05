@@ -1,4 +1,4 @@
-package com.pdfparsing.demo.entity;
+package com.pdfparsing.general.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
