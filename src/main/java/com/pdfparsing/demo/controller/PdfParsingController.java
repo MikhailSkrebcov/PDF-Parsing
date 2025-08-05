@@ -25,11 +25,13 @@ public class PdfParsingController {
     @PostMapping("/parse")
     public ResponseEntity<PdfParsingDto> parsePdf(@RequestParam("file") MultipartFile file) throws IOException {
         PdfParsingDto result = pdfParsingService.parseAndSavePdf(file);
+
         return ResponseEntity.ok(result);
     }
 
     @GetMapping("/results")
     public ResponseEntity<List<PdfParsingEntity>> getAllResults() {
+
         return ResponseEntity.ok(pdfParsingService.getAllResults());
     }
 }

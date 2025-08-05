@@ -2,17 +2,26 @@ package com.pdfparsing.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
 @Table(name = "pdf_parsing_results")
 public class PdfParsingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "taxpayer_inn")
     private String taxpayerInn;

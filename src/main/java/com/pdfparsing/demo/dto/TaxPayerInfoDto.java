@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 @Data
 public class TaxPayerInfoDto {
+
     private String inn;
     private String lastName;
     private String firstName;

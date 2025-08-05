@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 @Data
 public class TaxSummaryDto {
+
     private BigDecimal totalIncome;
     private BigDecimal taxBase;
     private BigDecimal calculatedTax;
