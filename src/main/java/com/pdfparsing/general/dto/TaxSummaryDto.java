@@ -1,4 +1,4 @@
-package com.pdfparsing.demo.dto;
+package com.pdfparsing.general.dto;
 
 import lombok.Data;
 import java.math.BigDecimal;

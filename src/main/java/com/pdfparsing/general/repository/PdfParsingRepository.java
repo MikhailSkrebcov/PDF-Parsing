@@ -1,6 +1,6 @@
-package com.pdfparsing.demo.repository;
+package com.pdfparsing.general.repository;
 
-import com.pdfparsing.demo.entity.PdfParsingEntity;
+import com.pdfparsing.general.entity.PdfParsingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

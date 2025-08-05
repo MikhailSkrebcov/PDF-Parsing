@@ -1,6 +1,6 @@
-package com.pdfparsing.demo.exception.handler;
+package com.pdfparsing.general.exception.handler;
 
-import com.pdfparsing.demo.exception.PdfProcessingException;
+import com.pdfparsing.general.exception.PdfProcessingException;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
