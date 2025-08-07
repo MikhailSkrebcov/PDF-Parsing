@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class TaxAgentInfoDto {
 
-    private String okato;
+    private String oktmo;
     private String phone;
     private String inn;
     private String kpp;
