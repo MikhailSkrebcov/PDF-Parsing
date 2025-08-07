@@ -1,10 +1,11 @@
 package com.pdfparsing.general.dto;
 
 import lombok.Data;
+
 import java.time.LocalDate;
 
 @Data
-public class TaxPayerInfoDto {
+public class PersonalInfoDto {
 
     private String inn;
     private String lastName;
