@@ -1,6 +1,7 @@
-package com.pdfparsing.demo.dto;
+package com.pdfparsing.general.dto;
 
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
 public class PdfParsingDto {
 
     private TaxAgentInfoDto taxAgentInfo;
-    private TaxPayerInfoDto taxPayerInfo;
+    private PersonalInfoDto personalInfoDto;
     private List<IncomeInfoDto> incomes;
     private TaxSummaryDto taxSummary;
     private LocalDate documentDate;
