@@ -1,4 +1,4 @@
-package com.pdfparsing.demo;
+package com.pdfparsing.general;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

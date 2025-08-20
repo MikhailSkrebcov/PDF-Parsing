@@ -1,11 +1,11 @@
-package com.pdfparsing.demo.dto;
+package com.pdfparsing.general.dto;
 
 import lombok.Data;
 
 @Data
 public class TaxAgentInfoDto {
 
-    private String okato;
+    private String oktmo;
     private String phone;
     private String inn;
     private String kpp;
