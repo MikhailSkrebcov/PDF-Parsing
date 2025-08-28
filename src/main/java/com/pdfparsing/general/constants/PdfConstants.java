@@ -1,8 +1,8 @@
-package com.pdfparsing.demo.constants;
+package com.pdfparsing.general.constants;
 
 public class PdfConstants {
 
-    public static final String OKATO_FIELD = "Код по ОКТМО";
+    public static final String OKTMO_FIELD = "Код по ОКТМО";
     public static final String PHONE_FIELD = "Телефон";
     public static final String INN_FIELD = "ИНН";
     public static final String KPP_FIELD = "КПП";
@@ -20,7 +20,7 @@ public class PdfConstants {
     public static final String DOCUMENT_NUMBER_FIELD = "Серия и номер документа";
     public static final String INCOME_SECTION_HEADER = "3. Доходы";
     public static final String AGENT_SECTION_HEADER = "1. Данные";
-    public static final String DATE_FROM_TEXT = "от";
+    public static final String DATE_PREFIX = "от";
 
 
     public static final String YEAR_PATTERN = "за _(\\d{4})_ год";
@@ -29,8 +29,6 @@ public class PdfConstants {
     public static final String UNDERSCORE_PATTERN = "_";
     public static final String DATE_SEPARATOR = "\\.";
     public static final String NAME_SEPARATOR = " ";
-    public static final String DECIMAL_COMMA = ",";
-    public static final String DECIMAL_POINT = ".";
     public static final String TEXT_EXTRACTION_PATTERN = "([\\s\\S]*?)";
     public static final String TABLE_COLUMN_SEPARATOR = "\\|";
 
