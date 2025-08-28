@@ -2,19 +2,23 @@ package com.pdfparsing.general.service;
 
 import com.pdfparsing.general.constants.PdfConstants;
 import com.pdfparsing.general.dto.PdfParsingDto;
+import com.pdfparsing.general.dto.PersonalInfoDto;
 import com.pdfparsing.general.entity.PersonalInfoEntity;
 import com.pdfparsing.general.exception.PdfProcessingException;
+import com.pdfparsing.general.mapper.ModelMapperConfig;
 import com.pdfparsing.general.repository.PdfParsingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -24,6 +28,7 @@ public class PdfParsingExtractService {
     private final PdfParsingRepository pdfParsingRepository;
     private final PdfDataService pdfDataParserService;
     private final PdfDataService pdfDataSaverService;
+    private final ModelMapper modelMapper;
 
     public PdfParsingDto parseAndSavePdf(MultipartFile file) {
         try {
@@ -38,8 +43,11 @@ public class PdfParsingExtractService {
         }
     }
 
-    public List<PersonalInfoEntity> getAllResults() {
-        return pdfParsingRepository.findAll();
+    public List<PersonalInfoDto> getAllResults() {
+        List<PersonalInfoEntity> entities = pdfParsingRepository.findAll();
+        return entities.stream()
+                .map(entity -> modelMapper.map(entity, PersonalInfoDto.class))
+                .collect(Collectors.toList());
     }
 
     public String extractTextFromPdf(MultipartFile file) throws IOException {

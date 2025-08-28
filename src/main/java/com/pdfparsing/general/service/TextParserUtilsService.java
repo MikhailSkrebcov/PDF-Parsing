@@ -33,7 +33,7 @@ public class TextParserUtilsService {
         try {
             return new BigDecimal(cleanedValue);
         } catch (NumberFormatException e) {
-            return BigDecimal.ZERO;
+            return BigDecimal.ONE;
         }
     }
 

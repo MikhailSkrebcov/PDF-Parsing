@@ -1,6 +1,7 @@
 package com.pdfparsing.general.controller;
 
 import com.pdfparsing.general.dto.PdfParsingDto;
+import com.pdfparsing.general.dto.PersonalInfoDto;
 import com.pdfparsing.general.entity.PersonalInfoEntity;
 import com.pdfparsing.general.service.PdfParsingExtractService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class PdfParsingController {
     }
 
     @GetMapping("/pdf/results")
-    public List<PersonalInfoEntity> getAllResults() {
+    public List<PersonalInfoDto> getAllResults() {
         return pdfParsingService.getAllResults();
     }
 }

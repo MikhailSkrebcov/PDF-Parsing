@@ -18,7 +18,6 @@ public class PersonalInfoEntity {
     @Id
     @GeneratedValue
     private UUID id;
-
     private String personInn;
     private String personName;
     private String taxAgentName;

@@ -38,6 +38,8 @@ dependencies {
 
 	implementation 'ch.qos.logback:logback-classic'
 
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+
 	runtimeOnly 'org.postgresql:postgresql'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

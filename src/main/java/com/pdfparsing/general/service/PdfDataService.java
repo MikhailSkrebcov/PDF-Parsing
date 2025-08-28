@@ -15,18 +15,19 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class PdfDataService {
 
-    private final PdfParsingRepository pdfParsingRepository;
-    private final PdfContentParserService combinedPdfParserService;
-    private final TextParserUtilsService textParserUtilsService;
+    private final PdfParsingRepository parsingRepository;
+    private final PdfContentParserService parserService;
+    private final TextParserUtilsService utilsService;
 
     public PdfParsingDto parse(String text) {
         PdfParsingDto dto = new PdfParsingDto();
 
-        dto.setTaxAgentInfo(combinedPdfParserService.parseTaxAgentInfo(text));
-        dto.setPersonalInfoDto(combinedPdfParserService.parsePersonalInfo(text));
+        dto.setTaxAgentInfo(parserService.parseTaxAgentInfo(text));
+        dto.setIncomes(parserService.parseIncomes(text));
+        dto.setTaxSummary(parserService.parseTaxSummary(text));
+
+        dto.setPersonalInfoDto(parserService.parsePersonalInfo(text));
         parseDates(text, dto);
-        dto.setIncomes(combinedPdfParserService.parseIncomes(text));
-        dto.setTaxSummary(combinedPdfParserService.parseTaxSummary(text));
 
         log.info(PdfConstants.LOG_SUCCESS_PARSE, dto.getPersonalInfoDto().getInn());
         return dto;
@@ -35,7 +36,7 @@ public class PdfDataService {
     public void save(PdfParsingDto dto) {
         try {
             PersonalInfoEntity entity = convertToEntity(dto);
-            pdfParsingRepository.save(entity);
+            parsingRepository.save(entity);
             log.info(PdfConstants.LOG_SAVED_TO_DB, entity.getId());
         } catch (Exception e) {
             log.error("Ошибка при сохранении данных в БД: {}", e.getMessage());
@@ -44,12 +45,12 @@ public class PdfDataService {
     }
 
     private void parseDates(String text, PdfParsingDto dto) {
-        String dateStr = textParserUtilsService.extractValue(text, PdfConstants.DOCUMENT_DATE_PATTERN, PdfConstants.AGENT_SECTION_HEADER);
+        String dateStr = utilsService.extractValue(text, PdfConstants.DOCUMENT_DATE_PATTERN, PdfConstants.AGENT_SECTION_HEADER);
         dto.setDocumentDate(dateStr != null ?
-                textParserUtilsService.parseDate(dateStr.replaceAll(PdfConstants.UNDERSCORE_PATTERN, "")) :
+                utilsService.parseDate(dateStr.replaceAll(PdfConstants.UNDERSCORE_PATTERN, "")) :
                 null);
 
-        String yearStr = textParserUtilsService.extractValue(text, PdfConstants.YEAR_PATTERN, PdfConstants.DATE_PREFIX);
+        String yearStr = utilsService.extractValue(text, PdfConstants.YEAR_PATTERN, PdfConstants.DATE_PREFIX);
         dto.setYear(yearStr != null && !yearStr.isEmpty() ? Integer.parseInt(yearStr) : null);
     }
 
@@ -58,7 +59,7 @@ public class PdfDataService {
 
         if (dto.getPersonalInfoDto() != null) {
             entity.setPersonInn(dto.getPersonalInfoDto().getInn());
-            entity.setPersonName(textParserUtilsService.formatName(
+            entity.setPersonName(utilsService.formatName(
                     dto.getPersonalInfoDto().getLastName(),
                     dto.getPersonalInfoDto().getFirstName(),
                     dto.getPersonalInfoDto().getMiddleName()
